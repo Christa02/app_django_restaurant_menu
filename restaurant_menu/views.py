@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Item
+from .models import Item, MEAL_TYPE
 
 
 class MenuListView(generic.ListView):
@@ -8,8 +8,8 @@ class MenuListView(generic.ListView):
     template_name = "index.html"
 
     def get_context_data(self, *, object_list=None, **kwargs):
-        context = {"meals": ["Pizza", "Pancake"],
-                   "ingredients": ["dough"]}
+        context = super().get_context_data(**kwargs)
+        context["meal_type"] = MEAL_TYPE
         return context
 
 
