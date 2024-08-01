@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Meal Details</h1>
-</body>
-</html>
+{% block content %}
+<div class="container">
+    <h2>{{ item.meal }}</h2>
+    <p>{{ item.meal_description }}</p>
+    <p>{{ item.price }}</p>
+</div>
+{% endblock content %}

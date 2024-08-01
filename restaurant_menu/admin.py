@@ -3,8 +3,8 @@ from .models import Item
 
 
 class MenuAdmin(admin.ModelAdmin):
-    list_display = ("meal", "status")
-    list_filter = ("status", )
+    list_display = ("meal", "meal_type", "status")
+    list_filter = ("status", "meal_type")
     search_fields = ("meal", )
 
 

@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Restaurant Menus</title>
-<body>
+{% block content %}
+<div class="container">
     <h1>Restaurant Menu</h1>
     {% for type in meal_type %}
         <h2>{{type.1}}</h2>
         {% for row in item_list %}
-            <h3>{{row.meal}}</h3>
-            <p>{{row.meal_description}}</p>
+            {% if row.meal_type == type.0 %}
+                {% if row.status == '0' %}
+                    <a href="{% url 'meal_details' row.pk %}"><h3><del>{{row.meal}}</del></h3></a>
+                    <p>{{row.meal_description}}</p>
+                {% else %}
+                    <a href="https://example.com"><h3>{{row.meal}}</h3></a>
+                    <p>{{row.meal_description}}</p>
+                {% endif %}
+            {% endif %}
         {% endfor %}
     {% endfor %}
-</body>
-</html>
+</div>
+{% endblock content %}
